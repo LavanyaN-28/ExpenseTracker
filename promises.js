@@ -6,7 +6,7 @@ const posts=[
 function getPosts(){
   setTimeout(() => {
     let output="";
-    posts.forEach((post,index)=> {
+    posts.forEach((post)=> {
       output+=`<li>${post.title}</li>`;
     });
     document.body.innerHTML=output
@@ -51,12 +51,13 @@ function deletePost(){
 const updateActivityTimePromise = updateLastUserActivityTime();
 
   Promise.all([createPost, updateLastUserActivityTime])
-    .then(([_, updatedLastActivityupTime]) => {
+    .then(([_, updateActivityTimePromise]) => {
       const allPosts = getPosts();
       console.log('All posts:', allPosts);
-      console.log('Last activity time:', updatedLastActivityupTime);
+      console.log('Last activity time:', updateActivityTimePromise);
 
       return deletePost();
+
     })
     .then(() => {
       const remainingPosts = getPosts();
