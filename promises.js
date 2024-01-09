@@ -18,6 +18,7 @@ function createPost(post){
     updateLastUserActivityTime()
     .then((updatedLastActivityTime) => {
       console.log("User's last activity time updated:", updatedLastActivityTime);
+      resolve();
     })
     .catch((error) => {
       console.error('Error updating last activity time:', error);
