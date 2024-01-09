@@ -52,20 +52,16 @@ const updateActivityTimePromise = updateLastUserActivityTime();
 
   Promise.all([createPost, updateLastUserActivityTime])
     .then(([_, updatedLastActivityupTime]) => {
-      // Retrieve all the posts and last activity time here
       const allPosts = getPosts();
       console.log('All posts:', allPosts);
       console.log('Last activity time:', updatedLastActivityupTime);
 
-      // Call deletePost to delete the last post
       return deletePost();
     })
     .then(() => {
-      // Retrieve all the posts again after deletion
       const remainingPosts = getPosts();
       console.log('Remaining posts:', remainingPosts);
     })
     .catch((error) => {
-      // Handle any errors that occurred during the update, post creation, or deletion
-      console.error('Error updating last activity time, creating post, or deleting post:', error);
+      console.error( error);
     });
